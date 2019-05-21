@@ -23,10 +23,10 @@ RUN apk update && \
 RUN apk add openrc
 RUN apk add --update openssh
 RUN rc-update add sshd
-RUN /etc/init.d/sshd restart
+#RUN /etc/init.d/sshd restart
 EXPOSE 22
 
 
 
 
-# CMD ["/usr/sbin/sshd", "-D", "-e", "-f", "/etc/ssh/sshd_config"]
+CMD ["/usr/sbin/sshd", "-D", "-e", "-f", "/etc/ssh/sshd_config"]
