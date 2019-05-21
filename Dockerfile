@@ -19,9 +19,14 @@ RUN apk update && \
     echo -e "Port 22\n" >> /etc/ssh/sshd_config && \
     cp -a /etc/ssh /etc/ssh.cache && \
     rm -rf /var/cache/apk/*
-
+    
+RUN apk add openrc
+RUN apk add --update openssh
+RUN rc-update add sshd
+RUN /etc/init.d/sshd restart
 EXPOSE 22
 
 
 
-CMD ["/usr/sbin/sshd", "-D", "-e", "-f", "/etc/ssh/sshd_config"]
+
+# CMD ["/usr/sbin/sshd", "-D", "-e", "-f", "/etc/ssh/sshd_config"]
