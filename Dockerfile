@@ -5,7 +5,7 @@ RUN apk add openrc
 RUN apk add --update openssh
 RUN echo "Port 22" >> /etc/ssh/ssh_config
 RUN rc-update add sshd
-/etc/init.d/sshd restart
+RUN /etc/init.d/sshd restart
 
 RUN export DEBIAN_FRONTEND=noninteractive
 RUN apk add tzdata
