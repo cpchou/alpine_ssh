@@ -24,9 +24,12 @@ RUN apk add openrc
 RUN apk add --update openssh
 RUN rc-update add sshd
 #RUN /etc/init.d/sshd restart
-EXPOSE 22
 
 
+RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
+RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
 
+
+#EXPOSE 22
 
 CMD ["/usr/sbin/sshd", "-D", "-e", "-f", "/etc/ssh/sshd_config"]
