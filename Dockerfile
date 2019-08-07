@@ -5,7 +5,8 @@ FROM        alpine:${ALPINE_VERSION}
 ARG         OPENSSH_VERSION=${OPENSSH_VERSION:-7.9_p1-r5}
 ENV         OPENSSH_VERSION=${OPENSSH_VERSION} \
             ROOT_PASSWORD=root \
-            KEYPAIR_LOGIN=false
+            KEYPAIR_LOGIN=false \
+	    TZ=Asia/Taipei
 
 COPY        entrypoint.sh /
 RUN         apk add --upgrade --no-cache openssh=${OPENSSH_VERSION} \
